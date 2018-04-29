@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设计学院: No.1 - 制作一个简单的菜单动画效果</title>
+    <style>
+        .container {
+            padding: 200px 0;
+            text-align: center;
+        }
+        .btn {
+            display: block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            margin: 20px auto 0;
+            border: 1px solid #ccc;
+        }
+        .btn:hover {
+            cursor: pointer;
+            border-color: #0e9eff;
+        }
+        .btn:active {
+            color: #fff;
+            background-color: #0e9eff;
+        }
+        .btn:focus {
+            outline: none;
+        }
+        .text {
+            padding: 5px 0;
+            position: relative;
+            transition: color .5s;
+        }
+        .text:after {
+            left: 0;
+            right: 0;
+            width: 0;
+            bottom: 0;
+            content: '';
+            margin: 0 auto;
+            display: block;
+            position: absolute;
+            transition: width .5s;
+            transition-timing-function: ease-out;
+            -moz-transition-timing-function: ease-out;
+            -webkit-transition-timing-function: ease-out;
+            -o-transition-timing-function: ease-out;
+            border-bottom: 1px solid #0e9eff;
+        }
+        .text.animated {
+            color: #0e9eff;
+        }
+        .text.animated:after {
+            width: 100%;
+        }
+    </style>
+    <script>
+        function changeStyle ()
+        {
+        	$text = document.getElementById('text');
+        	$class = $text.getAttribute('class');
+        	if ($class === 'text') {
+        		$text.setAttribute('class', 'text animated');
+            } else {
+        		$text.setAttribute('class', 'text');
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+
+    <span class="text" id="text">前端学院</span>
+    <button onclick="changeStyle()" class="btn">切换样式</button>
+</div>
+</body>
+</html>
